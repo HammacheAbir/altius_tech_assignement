@@ -15,7 +15,8 @@ const getList=(arr,i)=>{
 }
 
 const compare_lists=(list1, list2)=>{
-  if(list1?.next==null&&list2?.next==null){
+
+  if(list1?.next==null&&list2?.next==null){ //last node
     if(list1?.data==list2?.data)return 1
     else return 0
   }else{
@@ -24,10 +25,10 @@ const compare_lists=(list1, list2)=>{
   }
 }
 
-const fileToLists=(path)=>{
+const fileToLists=async(path)=>{
   const fs = require('fs')
   
-  fs.readFile(path, (err, data) => {
+  await fs.readFile(path, (err, data) => {
       if (err) throw err;
       var result = data.toString().split("\n")
       
@@ -46,4 +47,5 @@ const fileToLists=(path)=>{
   })
 }
 
-fileToLists('assignment01-2.txt')
+console.log("Testing assignment01-1")
+fileToLists('assignment01-1.txt')
